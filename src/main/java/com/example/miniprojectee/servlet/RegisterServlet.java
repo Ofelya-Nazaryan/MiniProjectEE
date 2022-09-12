@@ -5,6 +5,7 @@ import com.example.miniprojectee.manager.UserManager;
 import com.example.miniprojectee.models.User;
 import com.example.miniprojectee.util.Md5Util;
 
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,8 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(name = "register", value = "/register", loadOnStartup = 1)
-public class RegistrationServlet extends HttpServlet {
+@WebServlet(name = "register",  urlPatterns = "/register" ,loadOnStartup = 1)
+public class RegisterServlet extends HttpServlet {
 
     private UserManager userManager;
 
@@ -22,6 +23,7 @@ public class RegistrationServlet extends HttpServlet {
     public void init() throws ServletException {
         userManager = new UserManager();
     }
+
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -36,7 +38,7 @@ public class RegistrationServlet extends HttpServlet {
 
         boolean exist = userManager.existByEmail(email);
         if (exist) {
-            resp.sendRedirect("/MiniProjectEE_war_exploded/registration.jsp?reg_error=Email already used");
+            resp.sendRedirect("/register?reg_error=Email already used");
         } else {
             User currentUser = userManager.save(User.builder()
                     .name(name)
@@ -49,10 +51,9 @@ public class RegistrationServlet extends HttpServlet {
                     .build());
             HttpSession session = req.getSession();
             session.setAttribute("currentUser", currentUser);
-            resp.sendRedirect("/MiniProjectEE_war_exploded/userhome");
+            resp.sendRedirect("/user-home");
 
         }
 
     }
 }
-

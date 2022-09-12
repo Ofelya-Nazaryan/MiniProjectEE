@@ -18,8 +18,8 @@
 
         <ul>
             <li><a href="#">HOME </a></li>
-            <li><a href="registration.jsp">LOGIN </a></li>
-            <li><a href="registration.jsp">SIGNUP </a></li>
+            <li><a href="/login-page ">LOGIN </a></li>
+            <li><a href="/register-page">SIGNUP </a></li>
             <li><a href="#">CONTACT US </a></li>
 
         </ul>
@@ -27,9 +27,11 @@
 
     <div class="content">
         <h1>BE IN FASHION</h1>
-        <a href="#">Explore</a>
+        <a href="https://fashionunited.com/news/fashion">Explore</a>
     </div>
 </div>
+
+
 
 </body>
 
